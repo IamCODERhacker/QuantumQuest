@@ -1,2 +1,217 @@
-# QuantumQuest
-Its a Website where you can gather info and register for the hackathon QuantumQuest2o26
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuantumQuest 2026 Hackathon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 60px 20px;
+      background: linear-gradient(90deg, #ff00cc, #333399);
+      animation: glow 5s infinite alternate;
+    }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 5px #ff00cc); }
+      to { filter: drop-shadow(0 0 20px #00ffff); }
+    }
+
+    /* Glitch Heading */
+    .glitch {
+      position: relative;
+      font-size: 4em;
+      font-weight: bold;
+      color: #00ffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: flicker 2s infinite;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+    }
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 #ff00cc;
+      animation: glitchTop 2s infinite linear alternate-reverse;
+    }
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 #00ff00;
+      animation: glitchBottom 1.5s infinite linear alternate-reverse;
+    }
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      25% { clip: rect(10px, 9999px, 50px, 0); }
+      50% { clip: rect(85px, 9999px, 140px, 0); }
+      75% { clip: rect(45px, 9999px, 80px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+    @keyframes glitchBottom {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      25% { clip: rect(55px, 9999px, 90px, 0); }
+      50% { clip: rect(10px, 9999px, 40px, 0); }
+      75% { clip: rect(70px, 9999px, 120px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: 0.4; }
+    }
+
+    .date {
+      font-size: 1.2em;
+      margin: 20px 0;
+      color: #ffd700;
+    }
+
+    .countdown {
+      font-size: 1.5em;
+      margin-top: 20px;
+      color: #00ffff;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+
+    .progress-container {
+      width: 80%;
+      background: #333;
+      border-radius: 20px;
+      margin: 20px auto;
+      height: 25px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00ffff, #ff00cc);
+      transition: width 1s linear;
+    }
+
+    .cta { margin: 40px 0; }
+
+    /* Glitch Button */
+    .cta a {
+      position: relative;
+      display: inline-block;
+      background: #00ffff;
+      color: #000;
+      padding: 15px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2em;
+      overflow: hidden;
+    }
+    .cta a::before,
+    .cta a::after {
+      content: "Register Now";
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .cta a::before { color: #ff00cc; clip: rect(0, 0, 0, 0); }
+    .cta a::after  { color: #00ff00; clip: rect(0, 0, 0, 0); }
+    .cta a:hover::before {
+      clip: rect(0, 9999px, 100%, 0);
+      animation: glitchTop 0.5s infinite linear alternate-reverse;
+    }
+    .cta a:hover::after {
+      clip: rect(0, 9999px, 100%, 0);
+      animation: glitchBottom 0.5s infinite linear alternate-reverse;
+    }
+
+    section { padding: 50px 20px; }
+    h2 { font-size: 1.8em; margin-top: 10px; font-weight: 500; }
+    .highlight { font-size: 1.2em; color: #ffd700; margin: 15px 0; }
+
+    .contact {
+      background: #222;
+      padding: 40px 20px;
+      color: #fff;
+    }
+    .contact h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #00ffff;
+    }
+    .contact p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+    .contact a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      background: #111;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="glitch" data-text="QuantumQuest2026">QuantumQuest2026</h1>
+    <h2>The Hackathon of Tomorrow</h2>
+    <div class="date">February 21, 2026 • 12-Hour Hackathon</div>
+
+    <!-- Countdown + Event Timer -->
+    <div class="countdown" id="countdown">Loading timer…</div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Registration -->
+    <div class="cta">
+      <a href="https://docs.google.com/forms/d/1L7NXFtwex1Pe89dLvG9g3nicSxqjdBiciI0dByqomQc/viewform?edit_requested=true" target="_blank" rel="noopener">
+        Register Now
+      </a>
+    </div>
+  </header>
+
+  <section>
+    <h2>🚀 Why Join QuantumQuest?</h2>
+    <p>Step into a world of innovation, creativity, and collaboration. QuantumQuest 2026 brings together brilliant minds to solve real-world challenges with cutting-edge technology.</p>
+    <div class="highlight">👥 Team Size: 2 to 4 participants</div>
+  </section>
+
+  <section>
+    <h2>💡 What to Expect</h2>
+    <ul style="list-style:none; padding:0;">
+      <li>⚡ 12-hour coding marathon</li>
+      <li>🌐 Networking with industry leaders</li>
+      <li>🏆 Exciting prizes and recognition</li>
+      <li>🎨 Inclusive, vibrant community</li>
+      <li>🎤 Keynote talks & workshops</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📣 Spread the Word!</h2>
+    <p>QuantumQuest isn’t just another hackathon — it’s a movement. Share the event with your friends, classmates, and colleagues. Build your dream team of 2–4 innovators and dive into a day of creativity, coding, and collaboration.</p>
+    <p class="highlight">✨ Limited seats available — register early to secure your spot!</p>
+  </section>
+
+  <section class="contact">
+    <h2>📞 Contact Us</h2>
+    <p>For more info
